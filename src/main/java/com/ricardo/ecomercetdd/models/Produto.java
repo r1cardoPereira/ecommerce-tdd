@@ -2,23 +2,21 @@ package com.ricardo.ecomercetdd.models;
 
 public class Produto {
 
-    private String id;
+    private String codigo;
     private String nome;
     private String descricao;
     private String quantidade;
     private String valor;
    
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
+  
     public String getNome() {
         return nome;
     }
     public void setNome(String nome) {
         this.nome = nome;
+        if(this.codigo == null || this.codigo.isEmpty()){
+            this.codigo = this.nome.substring(0,3)+ "-"+this.nome.length();
+        }
     }
     public String getDescricao() {
         return descricao;
@@ -37,6 +35,11 @@ public class Produto {
     }
     public void setValor(String valor) {
         this.valor = valor;
+    }
+    public String getCodigo() {
+        return codigo.toUpperCase();
+    }
+    public void setCodigo(String string) {
     }
     
 

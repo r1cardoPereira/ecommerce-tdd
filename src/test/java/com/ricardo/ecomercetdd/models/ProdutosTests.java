@@ -11,7 +11,7 @@ class ProdutosTests {
 	@Test
 	void validarPropriedadesProduto() {
 		var produto = new Produto();
-		produto.setId("mdks");
+		produto.setCodigo("mdks");
 		produto.setNome("ricardo@teste.com");
 		produto.setDescricao("peça");
 		produto.setQuantidade("1100");
@@ -20,12 +20,29 @@ class ProdutosTests {
 
 		
 
-		assertEquals("mdks", produto.getId());
+		assertEquals("RIC-17", produto.getCodigo());
 		assertEquals("ricardo@teste.com", produto.getNome());
 		assertEquals("peça", produto.getDescricao());
 		assertEquals("1100", produto.getQuantidade());
 		assertEquals("1.900", produto.getValor());
 		
+
+	}
+
+	@Test
+	void aoSetarNomeGeraCodigoCasoCodigoVazio(){
+		var produto = new Produto();
+		produto.setNome("ricardo@teste.com");
+		assertEquals("RIC-17", produto.getCodigo());
+
+	}
+
+	@Test
+	void aoSetarNomeGeraCodigoCasoCodigoPreenchido(){
+		var produto = new Produto();
+		produto.setCodigo("RIC-16");
+		produto.setNome("ricardo@teste.com");
+		assertEquals("RIC-17", produto.getCodigo());
 
 	}
 }
